@@ -453,7 +453,7 @@ export default {
                     _self.logs.push(logObject);
                   }
                 } else {
-                  logObject.duration = _self.roundTimeMinutes(logObject.duration);
+                  logObject.duration = _self.roundTime(logObject.duration);
                   _self.logs.push(logObject);
                 }
                 _self.checkIfAlreadyLogged(log);

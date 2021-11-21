@@ -35,7 +35,7 @@
           <md-checkbox v-model="worklogDescriptionSplit">Split worklog description from first occurrence of:</md-checkbox>
           <input v-model="stringSplit" placeholder="Searched string to split" style="contain: content;"><br>
           <label>Round duration to next X minutes</label>
-          <input v-model="rountTimeMinutes" placeholder="0" style="contain: content;">
+          <input v-model="roundTimeMinutes" placeholder="0" style="contain: content;">
           <br><br>
           <h3>Extra Options</h3>
           <md-checkbox v-model="saveDates">Save dates (Persistent start and end dates)</md-checkbox><br>
