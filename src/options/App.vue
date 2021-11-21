@@ -33,7 +33,9 @@
           <md-checkbox v-model="jiraIssueInDescription">Parse Jira issue from description</md-checkbox>
           <md-checkbox v-model="worklogWihtoutDescription">Don't include Issue ID in worklog</md-checkbox><br>
           <md-checkbox v-model="worklogDescriptionSplit">Split worklog description from first occurrence of:</md-checkbox>
-          <input v-model="stringSplit" placeholder="Searched string to split" style="contain: content;">
+          <input v-model="stringSplit" placeholder="Searched string to split" style="contain: content;"><br>
+          <label>Round duration to next X minutes</label>
+          <input v-model="rountTimeMinutes" placeholder="0" style="contain: content;">
           <br><br>
           <h3>Extra Options</h3>
           <md-checkbox v-model="saveDates">Save dates (Persistent start and end dates)</md-checkbox><br>
@@ -73,6 +75,7 @@ export default {
       allowNumbersInId: true,
       clockworkEnabled: false,
       stringSplit: ':',
+      roundTimeMinutes: 0,
       togglApiToken: '',
       isSaving: false,
       showSnackbar: false,
@@ -94,6 +97,7 @@ export default {
       allowNumbersInId: true,
       clockworkEnabled: false,
       stringSplit: ':',
+      roundTimeMinutes: 0,
       togglApiToken: '',
       jiraPlugin: '{jiraUrl}/',
       weekdayMonday: false,
@@ -108,6 +112,7 @@ export default {
       _self.allowNumbersInId = setting.allowNumbersInId;
       _self.clockworkEnabled = setting.clockworkEnabled;
       _self.stringSplit = setting.stringSplit;
+      _self.roundTimeMinutes = setting.roundTimeMinutes;
       _self.togglApiToken = setting.togglApiToken;
       _self.jiraPlugin = setting.jiraPlugin;
       _self.weekdayMonday = setting.weekdayMonday;
@@ -129,6 +134,7 @@ export default {
         allowNumbersInId: _self.allowNumbersInId,
         clockworkEnabled: _self.clockworkEnabled,
         stringSplit: _self.stringSplit,
+        roundTimeMinutes: _self.roundTimeMinutes,
         togglApiToken: _self.togglApiToken,
         jiraPlugin: _self.jiraPlugin,
         weekdayMonday: _self.weekdayMonday,

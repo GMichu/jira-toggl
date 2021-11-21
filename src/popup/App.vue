@@ -148,6 +148,7 @@ export default {
       allowNumbersInId: true,
       clockworkEnabled: false,
       stringSplit: ':',
+      roundTimeMinutes: 0,
       togglApiToken: '',
       isSaving: false,
       showSnackbar: false,
@@ -183,6 +184,7 @@ export default {
         allowNumbersInId: true,
         clockworkEnabled: false,
         stringSplit: ':',
+        roundTimeMinutes: 0,
         togglApiToken: '',
         jiraPlugin: '',
         weekdayMonday: false,
@@ -200,6 +202,7 @@ export default {
         _self.allowNumbersInId = setting.allowNumbersInId;
         _self.clockworkEnabled = setting.clockworkEnabled;
         _self.stringSplit = setting.stringSplit;
+        _self.roundTimeMinutes = setting.roundTimeMinutes;
         _self.togglApiToken = setting.togglApiToken;
         _self.jiraPlugin = setting.jiraPlugin;
         _self.weekdayMonday = setting.weekdayMonday;
@@ -212,6 +215,14 @@ export default {
       });
   },
   methods: {
+    roundTime(initialDurationSeconds){
+      const minutesDuration = initialDurationSeconds / 60; // initialDuration is in seconds
+      if (minutesDuration == 0 || this.roundTimeMinutes == 0) { // no rounding required
+            return initialDurationSeconds;
+      }
+      const roundedDuration = (Math.floor(minutesDuration / this.roundTimeMinutes) + 1) * this.roundTimeMinutes;
+      return roundedDuration * 60 // convert back to seconds
+    },
     refreshEntries () {
       if (this.saveDates) {
         this.saveActualDates();
@@ -442,6 +453,7 @@ export default {
                     _self.logs.push(logObject);
                   }
                 } else {
+                  logObject.duration = _self.roundTimeMinutes(logObject.duration);
                   _self.logs.push(logObject);
                 }
                 _self.checkIfAlreadyLogged(log);
