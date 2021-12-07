@@ -69,7 +69,8 @@
               <md-table-cell class="no-wrap">
                 <a v-if="log.issue != 'NO ID'" :href="jiraUrl + '/browse/' + log.issue" target="_blank">{{ log.issue }}</a><a v-else>{{ log.issue }}</a>
               </md-table-cell>
-              <md-table-cell>{{ log.description }}</md-table-cell>
+              <!--<md-table-cell>{{ log.description }}</md-table-cell>-->
+              <input v-model="log.description" style="contain: content;">
               <md-table-cell class="no-wrap">
                 {{
                   $moment(log.start).format("l")
