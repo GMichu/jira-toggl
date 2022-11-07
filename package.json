@@ -1,6 +1,6 @@
 {
   "name": "jira-toggl",
-  "version": "1.6.4b",
+  "version": "1.6.5b",
   "description": "A Vue.js web extension",
   "author": "Simon Eldevig <simoneldevig@gmail.com>",
   "scripts": {
